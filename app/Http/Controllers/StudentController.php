@@ -15,43 +15,44 @@ class StudentController extends Controller
         return view('students.index', compact('students'));
     }
 
-    // Show student creation form
+    // Display the create form
     public function create()
     {
         return view('students.create');
     }
 
-    // Save a new student
+    // Store a new student
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'roll_no' => 'required|unique:students,roll_no',
+            'roll_no' => 'required|string',
             'name' => 'required|string',
-            'email' => 'required|email|unique:students,email',
+            'email' => 'required|email',
             'department' => 'required|string',
             'semester' => 'required|integer',
             'cgpa' => 'required|numeric|min:0|max:10',
         ]);
 
-        Student::create($validated);
+        $student = Student::create($validated);
 
-        return redirect()->route('students.index')
-            ->with('status', 'Student created successfully!');
+        return redirect()
+            ->route('students.show', $student)
+            ->with('status', 'Student added successfully.');
     }
 
-    // Display an individual student
+    // Display one student using ID-based implicit binding
     public function show(Student $student)
     {
         return view('students.show', compact('student'));
     }
 
-    // Show edit form (not required for this activity)
+    // Display edit form
     public function edit(Student $student)
     {
         return view('students.edit', compact('student'));
     }
 
-    // Update student (not required for this activity)
+    // Update student
     public function update(Request $request, Student $student)
     {
         $student->update($request->all());
@@ -59,7 +60,7 @@ class StudentController extends Controller
         return redirect()->route('students.index');
     }
 
-    // Delete student (not required for this activity)
+    // Delete student
     public function destroy(Student $student)
     {
         $student->delete();

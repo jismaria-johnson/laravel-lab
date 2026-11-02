@@ -1,18 +1,15 @@
 <!DOCTYPE html>
-
 <html>
 <head>
     <title>Laravel Student Management</title>
 </head>
 <body>
 
-```
-<h2>CST463 Laravel Lab</h2>
+    <h2>CST463 Laravel Lab</h2>
 
-<hr>
+    <hr>
 
-@yield('content')
-```
+    @yield('content')
 
 </body>
 </html>

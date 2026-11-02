@@ -9,17 +9,14 @@ Route::get('/', function () {
     return view('home');
 });
 
-// Activity A
-
-Route::get('/hello/{your_name}', function ($your_name) {
-    return 'Hello ' . $your_name;
+Route::get('/hello/{name}', function (string $name) {
+    return "Hello {$name}";
 });
 
 Route::get('/about', [AboutController::class, 'index']);
 
-
 Route::resource('students', StudentController::class);
 
-Route::get('/roll/{student}', function (Student $student) {
-    return view('students.show', compact('student'));
+Route::get('/roll/{roll}', function (Student $roll) {
+    return view('students.show', ['student' => $roll]);
 });
