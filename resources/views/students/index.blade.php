@@ -15,7 +15,6 @@
 <br><br>
 
 <table border="1" cellpadding="10">
-
     <tr>
         <th>ID</th>
         <th>Roll Number</th>
@@ -28,25 +27,19 @@
     </tr>
 
     @foreach($students as $student)
-
-    <tr>
-        <td>{{ $student->id }}</td>
-        <td>{{ $student->roll_no }}</td>
-        <td>{{ $student->name }}</td>
-        <td>{{ $student->email }}</td>
-        <td>{{ $student->department }}</td>
-        <td>{{ $student->semester }}</td>
-        <td>{{ $student->cgpa }}</td>
-
-        <td>
-            <a href="{{ route('students.show', $student->id) }}">
-                View
-            </a>
-        </td>
-    </tr>
-
+        <tr>
+            <td>{{ $student->id }}</td>
+            <td>{{ $student->roll_no }}</td>
+            <td>{{ $student->name }}</td>
+            <td>{{ $student->email }}</td>
+            <td>{{ $student->department }}</td>
+            <td>{{ $student->semester }}</td>
+            <td>{{ $student->cgpa }}</td>
+            <td>
+                <a href="{{ route('students.show', $student->id) }}">View</a>
+            </td>
+        </tr>
     @endforeach
-
 </table>
 
 @endsection
